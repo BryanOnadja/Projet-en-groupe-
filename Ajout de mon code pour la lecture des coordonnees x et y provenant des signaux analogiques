@@ -1,0 +1,17 @@
+def lire_position(adc_x: ADC,adc_y: ADC, x_min=-80, x_max= 80, y_min =0 ,y_max=160) --> tuple :
+    """
+    lecture des signaux analogiques ADC par une transformation en coordonnees X/Y
+    - X:  de x_min à x_max (généralement négatif à positif pour gauche/droite)
+    - Y: de y_min a y_max (positif pour hau/bas)
+    """
+    valeur_x = adc_x.read_u16()  # 0-65535
+    valeur_y = adc_y.read_u16()
+    
+    # Mapper X: 0 -> x_min, 65535 -> x_max
+    x = x_min + (valeur_x / 65535) * (x_max - x_min)
+    
+    # Mapper Y: 0 -> y_min, 65535 -> y_max (inverser si nécessaire)
+    y = y_min + (valeur_y / 65535) * (y_max - y_min)
+    
+    return round(x, 1), round(y, 1)
+    
