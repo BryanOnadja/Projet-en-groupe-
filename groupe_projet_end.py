@@ -143,12 +143,13 @@ def cinematique_inverse(xB, yB):
     
     # Beta : angle du coude (extérieur)
     # Ici on veut l'angle de flexion
-    beta_rad = math.pi - gamma
+    beta_rad =  math.pi - gamma 
 
     # --- CONVERSION EN DEGRÉS ---
-    alpha_deg = math.degrees(alpha_rad)
-    beta_deg = math.degrees(beta_rad)
+    alpha_deg = math.degrees(alpha_rad) + 48
+    beta_deg = 143 - math.degrees(beta_rad)
     
+
     if DEBUG:
          # On affiche de temps en temps pour debug
          # print(f"Pos: ({xB}, {yB}) -> Alpha={alpha_deg:.1f}, Beta={beta_deg:.1f}")
@@ -183,7 +184,7 @@ def test_servos():
     elbow_servo.duty_u16(duty_mid)
     pen_placement(False)  # Stylo levé
     
-    time.sleep(2)
+    time.sleep(0.02)
     print("Test servos terminé")
 
 def test_cinematique():
@@ -215,7 +216,7 @@ def test_potentiometres():
         val_y = right_knob.read_u16()
         x, y = lire_position_xy()
         print(f"Pot X: {val_x:5d}, Pot Y: {val_y:5d} -> Position: ({x:5.1f}, {y:5.1f})")
-        time.sleep(1)
+        time.sleep(0.02)
 
 # ---------- PROGRAMME PRINCIPAL ----------
 
