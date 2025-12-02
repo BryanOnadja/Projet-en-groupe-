@@ -40,7 +40,7 @@ shoulder_servo.freq(50)
 # Potentiomètres et bouton
 left_knob = machine.ADC(machine.Pin(27))  # Contrôle X
 right_knob = machine.ADC(machine.Pin(26))  # Contrôle Y
-pen_button = machine.Pin(22, machine.Pin.IN, machine.Pin.PULL_DOWN)
+pen_button = machine.Pin(12, machine.Pin.IN, machine.Pin.PULL_DOWN)
 
 # ---------- VARIABLES GLOBALES ----------
 pen_state = False
@@ -184,7 +184,7 @@ def test_servos():
     elbow_servo.duty_u16(duty_mid)
     pen_placement(False)  # Stylo levé
     
-    time.sleep(0.02)
+    time.sleep(2)
     print("Test servos terminé")
 
 def test_cinematique():
